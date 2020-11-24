@@ -1,0 +1,46 @@
+var TSC = TSC || {};
+
+TSC.embedded_config_xml = '<x:xmpmeta tsc:version="2.0.1" xmlns:x="adobe:ns:meta/" xmlns:tsc="http://www.techsmith.com/xmp/tsc/">\
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:xmpDM="http://ns.adobe.com/xmp/1.0/DynamicMedia/" xmlns:xmpG="http://ns.adobe.com/xap/1.0/g/" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" xmlns:tscDM="http://www.techsmith.com/xmp/tscDM/" xmlns:tscIQ="http://www.techsmith.com/xmp/tscIQ/" xmlns:tscHS="http://www.techsmith.com/xmp/tscHS/" xmlns:stDim="http://ns.adobe.com/xap/1.0/sType/Dimensions#" xmlns:stFnt="http://ns.adobe.com/xap/1.0/sType/Font#" xmlns:exif="http://ns.adobe.com/exif/1.0" xmlns:dc="http://purl.org/dc/elements/1.1/">\
+      <rdf:Description dc:date="2020-07-16 09:28:19 PM" dc:source="Camtasia,19.0.1,enu" dc:title="MATH8_4.1Q1KA" tscDM:originId="3481AEF2-46FE-4338-959A-D262F35CE9B3" tscDM:project="MATH8_4.1Q1KA">\
+         <xmpDM:duration xmpDM:scale="1/1000" xmpDM:value="144100"/>\
+         <xmpDM:videoFrameSize stDim:unit="pixel" stDim:h="720" stDim:w="1280"/>\
+         <tsc:langName>\
+            <rdf:Bag>\
+               <rdf:li xml:lang="en-US">English</rdf:li></rdf:Bag>\
+         </tsc:langName>\
+         <xmpDM:Tracks>\
+            <rdf:Bag>\
+               <rdf:li>\
+                  <rdf:Description xmpDM:trackType="Hotspot" xmpDM:frameRate="f1000" xmpDM:trackName="Hotspots">\
+                     <xmpDM:markers>\
+                        <rdf:Seq>\
+                           <rdf:li><rdf:Description xmpDM:label="1" xmpDM:startTime="6470" xmpDM:duration="7560" tscDM:boundingPoly="118,328;247,328;247,408;118,408;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="4667"/></rdf:li><rdf:li><rdf:Description xmpDM:label="2" xmpDM:startTime="15030" xmpDM:duration="117900" tscDM:boundingPoly="118,240;247,240;247,321;118,321;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="4667"/></rdf:li><rdf:li><rdf:Description xmpDM:label="3" xmpDM:startTime="133930" xmpDM:duration="9170" tscDM:boundingPoly="154,240;283,240;283,321;154,321;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="4667"/></rdf:li><rdf:li><rdf:Description xmpDM:label="4" xmpDM:startTime="7570" xmpDM:duration="6460" tscDM:boundingPoly="257,317;1040,317;1040,391;257,391;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="7567"/></rdf:li><rdf:li><rdf:Description xmpDM:label="5" xmpDM:startTime="15030" xmpDM:duration="117900" tscDM:boundingPoly="257,229;1040,229;1040,304;257,304;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="7567"/></rdf:li><rdf:li><rdf:Description xmpDM:label="6" xmpDM:startTime="133930" xmpDM:duration="9170" tscDM:boundingPoly="293,229;1076,229;1076,304;293,304;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="7567"/></rdf:li><rdf:li><rdf:Description xmpDM:label="7" xmpDM:startTime="15130" xmpDM:duration="117770" tscDM:boundingPoly="107,326;316,326;316,404;107,404;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="13233"/></rdf:li><rdf:li><rdf:Description xmpDM:label="8" xmpDM:startTime="133900" xmpDM:duration="9170" tscDM:boundingPoly="143,326;352,326;352,404;143,404;" tscDM:rotate="0.000000" tscHS:pause="1" tscHS:jumpTime="13233"/></rdf:li><rdf:li><rdf:Description xmpDM:label="9" xmpDM:startTime="29200" xmpDM:duration="104370" tscDM:boundingPoly="309,320;803,320;803,396;309,396;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="29167"/></rdf:li><rdf:li><rdf:Description xmpDM:label="10" xmpDM:startTime="39030" xmpDM:duration="56370" tscDM:boundingPoly="825,321;1162,321;1162,477;825,477;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="39300"/></rdf:li><rdf:li><rdf:Description xmpDM:label="11" xmpDM:startTime="54270" xmpDM:duration="29530" tscDM:boundingPoly="291,426;758,426;758,469;291,469;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="54200"/></rdf:li><rdf:li><rdf:Description xmpDM:label="12" xmpDM:startTime="84800" xmpDM:duration="47770" tscDM:boundingPoly="291,397;758,397;758,440;291,440;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="54200"/></rdf:li><rdf:li><rdf:Description xmpDM:label="13" xmpDM:startTime="85330" xmpDM:duration="47240" tscDM:boundingPoly="290,459;727,459;727,516;290,516;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="85100"/></rdf:li><rdf:li><rdf:Description xmpDM:label="14" xmpDM:startTime="119270" xmpDM:duration="13630" tscDM:boundingPoly="273,527;1070,527;1070,592;273,592;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="119033"/></rdf:li><rdf:li><rdf:Description xmpDM:label="15" xmpDM:startTime="133900" xmpDM:duration="9170" tscDM:boundingPoly="309,323;1106,323;1106,388;309,388;" tscDM:rotate="0.000000" tscHS:pause="0" tscHS:jumpTime="119033"/></rdf:li></rdf:Seq>\
+                     </xmpDM:markers>\
+                  </rdf:Description>\
+               </rdf:li>\
+            </rdf:Bag>\
+         </xmpDM:Tracks>\
+         <tscDM:controller>\
+            <rdf:Description xmpDM:name="tscplayer">\
+               <tscDM:parameters>\
+                  <rdf:Bag>\
+                     <rdf:li xmpDM:name="autohide" xmpDM:value="true"/><rdf:li xmpDM:name="autoplay" xmpDM:value="true"/><rdf:li xmpDM:name="loop" xmpDM:value="false"/><rdf:li xmpDM:name="searchable" xmpDM:value="false"/><rdf:li xmpDM:name="captionsenabled" xmpDM:value="false"/><rdf:li xmpDM:name="sidebarenabled" xmpDM:value="false"/><rdf:li xmpDM:name="unicodeenabled" xmpDM:value="false"/><rdf:li xmpDM:name="backgroundcolor" xmpDM:value="1E1C1C"/><rdf:li xmpDM:name="sidebarlocation" xmpDM:value="left"/><rdf:li xmpDM:name="endaction" xmpDM:value="stop"/><rdf:li xmpDM:name="endactionparam" xmpDM:value="true"/><rdf:li xmpDM:name="locale" xmpDM:value="en-US"/></rdf:Bag>\
+               </tscDM:parameters>\
+               <tscDM:controllerText>\
+                  <rdf:Bag>\
+                  </rdf:Bag>\
+               </tscDM:controllerText>\
+            </rdf:Description>\
+         </tscDM:controller>\
+         <tscDM:contentList>\
+            <rdf:Description>\
+               <tscDM:files>\
+                  <rdf:Seq>\
+                     <rdf:li xmpDM:name="0" xmpDM:value="MATH8_4.1Q1KA.mp4"/></rdf:Seq>\
+               </tscDM:files>\
+            </rdf:Description>\
+         </tscDM:contentList>\
+      </rdf:Description>\
+   </rdf:RDF>\
+</x:xmpmeta>';

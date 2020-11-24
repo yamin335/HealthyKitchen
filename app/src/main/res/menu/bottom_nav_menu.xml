@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_navigation"
+        android:title="Books"
+        android:icon="@drawable/doctors_a"
+        android:menuCategory="secondary"/>
+    <item
+        android:id="@+id/profiles_navigation"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_person"
+        android:menuCategory="secondary"/>
+    <item
+        android:id="@+id/chats_navigation"
+        android:title="History"
+        android:icon="@drawable/message_a"
+        android:menuCategory="secondary"/>
+    <item
+        android:id="@+id/settings_navigation"
+        android:title="Settings"
+        android:icon="@drawable/settings_a"
+        android:menuCategory="secondary"/>
+</menu>

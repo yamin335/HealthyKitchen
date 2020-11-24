@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav"
+    tools:ignore="InvalidNavigation"
+    app:startDestination="@id/home2Fragment">
+    <fragment
+        tools:layout="@layout/fragment_main2"
+        android:id="@+id/home2Fragment"
+        android:name="com.rtchubs.restohubs.ui.home.Home2Fragment"
+        android:label="QPay" >
+        <action
+            android:id="@+id/action_home2Fragment_to_addPaymentMethodsFragment"
+            app:launchSingleTop="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/addPaymentMethodsFragment" />
+        <action
+            android:id="@+id/action_home2Fragment_to_topUpMobileFragment"
+            app:destination="@id/topUpMobileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
+        <action
+            android:id="@+id/action_home2Fragment_to_exams_nav_graph"
+            app:destination="@id/exams_nav_graph"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_home2Fragment_to_moreShoppingMallFragment"
+            app:destination="@id/moreShoppingMallFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_home2Fragment_to_allShopListFragment"
+            app:destination="@id/allShopListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_home2Fragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/addPaymentMethodsFragment"
+        tools:layout="@layout/layout_add_payment_method"
+        android:name="com.rtchubs.restohubs.ui.add_payment_methods.AddPaymentMethodsFragment"
+        android:label="@string/select_account_type" >
+        <action
+            android:id="@+id/action_addPaymentMethodsFragment_to_addBankFragment"
+            app:destination="@id/addBankFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_addPaymentMethodsFragment_to_addCardFragment"
+            app:destination="@id/addCardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/addBankFragment"
+        android:name="com.rtchubs.restohubs.ui.add_payment_methods.AddBankFragment"
+        android:label="Add Bank Account"
+        tools:layout="@layout/fragment_add_bank" >
+        <action
+            android:id="@+id/action_addBankFragment_to_home2Fragment"
+            app:destination="@id/home2Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/addPaymentMethodsFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="selectedBank"
+            app:argType="com.rtchubs.restohubs.models.payment_account_models.BankOrCard" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCardFragment"
+        android:name="com.rtchubs.restohubs.ui.add_payment_methods.AddCardFragment"
+        android:label="Add Debit/Credit Card"
+        tools:layout="@layout/fragment_add_card" >
+        <action
+            android:id="@+id/action_addCardFragment_to_home2Fragment"
+            app:destination="@id/home2Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/addPaymentMethodsFragment"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="selectedCard"
+            app:argType="com.rtchubs.restohubs.models.payment_account_models.BankOrCard" />
+    </fragment>
+    <fragment
+        android:id="@+id/topUpMobileFragment"
+        android:name="com.rtchubs.restohubs.ui.topup.TopUpMobileFragment"
+        android:label="Mobile Number"
+        tools:layout="@layout/fragment_topup_mobile">
+        <argument
+            android:name="topUpHelper"
+            app:argType="com.rtchubs.restohubs.models.topup.TopUpHelper" />
+        <action
+            android:id="@+id/action_topUpMobileFragment_to_topUpAmountFragment"
+            app:destination="@id/topUpAmountFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/topUpAmountFragment"
+        android:name="com.rtchubs.restohubs.ui.topup.TopUpAmountFragment"
+        android:label="Recharge Amount"
+        tools:layout="@layout/fragment_topup_amount">
+        <argument
+            android:name="topUpHelper"
+            app:argType="com.rtchubs.restohubs.models.topup.TopUpHelper" />
+        <action
+            android:id="@+id/action_topUpAmountFragment_to_topUpBankCardFragment"
+            app:destination="@id/topUpBankCardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/topUpPinFragment"
+        android:name="com.rtchubs.restohubs.ui.topup.TopUpPinFragment"
+        android:label="Pin Number"
+        tools:layout="@layout/fragment_topup_pin">
+        <argument
+            android:name="topUpHelper"
+            app:argType="com.rtchubs.restohubs.models.topup.TopUpHelper" />
+        <action
+            android:id="@+id/action_topUpPinFragment_to_home2Fragment"
+            app:destination="@id/home2Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/addPaymentMethodsFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/topUpBankCardFragment"
+        android:name="com.rtchubs.restohubs.ui.topup.TopUpBankCardFragment"
+        tools:layout="@layout/fragment_topup_bank_card"
+        android:label="Select Account">
+        <argument
+            android:name="topUpHelper"
+            app:argType="com.rtchubs.restohubs.models.topup.TopUpHelper" />
+        <action
+            android:id="@+id/action_topUpBankCardFragment_to_topUpPinFragment"
+            app:destination="@id/topUpPinFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <include app:graph="@navigation/exams_nav_graph" />
+    <fragment
+        android:id="@+id/moreShoppingMallFragment"
+        android:name="com.rtchubs.restohubs.ui.home.MoreShoppingMallFragment"
+        android:label="Shopping Malls" >
+        <action
+            android:id="@+id/action_moreShoppingMallFragment_to_allShopListFragment"
+            app:destination="@id/allShopListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_moreShoppingMallFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/allShopListFragment"
+        android:name="com.rtchubs.restohubs.ui.home.AllShopListFragment"
+        android:label="Shops" >
+        <argument
+            android:name="shoppingMall"
+            app:argType="com.rtchubs.restohubs.models.ShoppingMall" />
+        <action
+            android:id="@+id/action_allShopListFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_allShopListFragment_to_shopDetailsFragment"
+            app:destination="@id/shopDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="com.rtchubs.restohubs.ui.home.ProductListFragment"
+        android:label="Products" >
+        <argument
+            android:name="merchant"
+            app:argType="com.rtchubs.restohubs.models.Merchant" />
+        <action
+            android:id="@+id/action_productListFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_productListFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.rtchubs.restohubs.ui.home.ProductDetailsFragment"
+        android:label="Product Details" >
+        <argument
+            android:name="product"
+            app:argType="com.rtchubs.restohubs.models.Product" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.rtchubs.restohubs.ui.cart.CartFragment"
+        android:label="Cart" />
+    <fragment
+        android:id="@+id/shopDetailsFragment"
+        android:name="com.rtchubs.restohubs.ui.shops.ShopDetailsFragment"
+        android:label="ShopDetailsFragment" >
+        <argument
+            android:name="merchant"
+            app:argType="com.rtchubs.restohubs.models.Merchant" />
+        <action
+            android:id="@+id/action_shopDetailsFragment_to_productListFragment"
+            app:destination="@id/productListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_shopDetailsFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_shopDetailsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_shopDetailsFragment_to_ARLocationFragment"
+            app:destination="@id/ARLocationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/ARLocationFragment"
+        android:name="com.rtchubs.restohubs.ar_location.ARLocationFragment"
+        android:label="ARLocationFragment" />
+</navigation>

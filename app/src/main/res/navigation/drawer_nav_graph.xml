@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_nav_graph">
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.rtchubs.restohubs.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.rtchubs.restohubs.ui.info.InfoFragment"
+        android:label="InfoFragment" />
+
+</navigation>

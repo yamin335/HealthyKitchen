@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="ShopDetailsContactUsFragmentBinding">
+        <variable
+            name="merchant"
+            type="com.rtchubs.restohubs.models.Merchant" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="32dp"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rowMobile">
+                    <ImageView
+                        android:id="@+id/iconMobile"
+                        app:tint="#0AB939"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/ic_baseline_call_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_toEndOf="@id/iconMobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="@{merchant.mobile}"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="+88-09603-111999"/>
+                        <TextView
+                            android:text="Mobile"
+                            android:textSize="10sp"
+                            android:textColor="#808080"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/divider1"
+                    android:background="?android:attr/listDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px" android:layout_marginStart="49dp"/>
+
+                <RelativeLayout
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rowWhatsApp">
+                    <ImageView
+                        android:id="@+id/iconWhatsApp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/icon_whatsapp"
+                        android:layout_width="24dp"
+                        android:layout_height="32dp"/>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_toEndOf="@id/iconWhatsApp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="@{merchant.whatsApp}"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="+88-09603-111999"/>
+                        <TextView
+                            android:text="WhatsApp"
+                            android:textSize="10sp"
+                            android:textColor="#808080"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/divider2"
+                    android:background="?android:attr/listDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px" android:layout_marginStart="49dp"/>
+
+                <RelativeLayout
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rowEmail">
+                    <ImageView
+                        android:id="@+id/iconTel"
+                        app:tint="#eea11a"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/ic_outline_email_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_toEndOf="@id/iconTel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="@{merchant.email}"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            tools:text="+88-09603-111999"/>
+                        <TextView
+                            android:text="Email"
+                            android:textSize="10sp"
+                            android:textColor="#808080"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/divider3"
+                    android:background="?android:attr/listDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px" android:layout_marginStart="49dp"/>
+
+                <RelativeLayout
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rowAddress">
+                    <ImageView
+                        android:id="@+id/iconAddress"
+                        app:tint="#2196F3"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/ic_outline_location_on_24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_toEndOf="@id/iconAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="@{merchant.address}"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            tools:text="Level-1, Jamuna Future Park, Uttara, Dhaka-1230, Bangladesh"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="top"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:text="Address"
+                                android:textSize="10sp"
+                                android:textColor="#808080"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"/>
+
+                            <TextView
+                                android:text="Show on Google Map"
+                                android:textSize="12sp"
+                                android:textColor="#2196F3"
+                                android:gravity="end"
+                                android:layout_marginEnd="16dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

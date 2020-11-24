@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="ripple_effect_duration">200</integer>
+    <integer name="loading_duration">60</integer>
+    <integer name="mobile_length">14</integer>
+    <integer name="amount_length">8</integer>
+    <integer name="min_pin_length">6</integer>
+    <integer name="pin_length">6</integer>
+    <integer name="otp_length">6</integer>
+    <integer name="nid_length">20</integer>
+    <integer name="member_id_length">3</integer>
+    <integer name="psb_id_length">20</integer>
+    <integer name="errorDrawable">98</integer>
+    <integer name="placeholder">99</integer>
+    <integer name="maxLengthMobile">15</integer>
+</resources>

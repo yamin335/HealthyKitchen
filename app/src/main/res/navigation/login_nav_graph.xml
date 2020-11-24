@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_graph"
+    app:startDestination="@id/viewPagerFragment"
+    tools:ignore="UnusedNavigation">
+    
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.rtchubs.restohubs.ui.login.ViewPagerFragment"
+        tools:layout="@layout/fragment_view_pager">
+        <action
+            android:id="@+id/action_viewPagerFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/termsAndConditions"
+        android:name="com.rtchubs.restohubs.ui.terms_and_conditions.TermsAndConditionsFragment"
+        tools:layout="@layout/fragment_terms_and_condition">
+
+        <action
+            android:id="@+id/action_termsAndConditions_to_otpSignInFragment3"
+            app:destination="@id/otpSignInFragment" />
+
+        <argument
+            android:name="registrationHelper"
+            app:argType="com.rtchubs.restohubs.models.registration.RegistrationHelperModel" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.rtchubs.restohubs.ui.login.SignInFragment"
+        tools:layout="@layout/fragment_sign_in">
+
+        <action
+            android:id="@+id/action_signInFragment_to_termsFragment"
+            app:destination="@id/termsAndConditions"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_signInFragment_to_otpSignInFragment"
+            app:destination="@id/otpSignInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otpSignInFragment"
+        android:name="com.rtchubs.restohubs.ui.otp_signin.OtpSignInFragment"
+        tools:layout="@layout/fragment_otp_sign_in">
+        <action
+            android:id="@+id/action_otpSignInFragment_to_pinNumberFragment"
+            app:destination="@id/pinNumberFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="registrationHelper"
+            app:argType="com.rtchubs.restohubs.models.registration.RegistrationHelperModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/pinNumberFragment"
+        android:name="com.rtchubs.restohubs.ui.pin_number.PinNumberFragment"
+        tools:layout="@layout/fragment_pin_number">
+        <action
+            android:id="@+id/action_pinNumberFragment_to_permissionsFragment"
+            app:destination="@id/permissionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="registrationHelper"
+            app:argType="com.rtchubs.restohubs.models.registration.RegistrationHelperModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileSignInFragment"
+        android:name="com.rtchubs.restohubs.ui.profile_signin.ProfileSignInFragment"
+        tools:layout="@layout/fragment_profile_sign_in">
+        <action
+            android:id="@+id/action_profileSignInFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/login_graph"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="NIDData"
+            app:argType="com.rtchubs.restohubs.models.NIDDataModels" />
+        <argument
+            android:name="registrationHelper"
+            app:argType="com.rtchubs.restohubs.models.registration.RegistrationHelperModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/permissionsFragment"
+        android:name="com.rtchubs.restohubs.camerax.PermissionsFragment"
+        android:label="PermissionsFragment">
+
+        <action
+            android:id="@+id/action_permissionsFragment_to_NIDScanCameraXFragment"
+            app:destination="@id/NIDScanCameraXFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/pinNumberFragment" />
+        <argument
+            android:name="registrationHelper"
+            app:argType="com.rtchubs.restohubs.models.registration.RegistrationHelperModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/NIDScanCameraXFragment"
+        android:name="com.rtchubs.restohubs.nid_scan.NIDScanCameraXFragment"
+        android:label="NIDScanCameraXFragment">
+        <action
+            android:id="@+id/action_NIDScanCameraXFragment_to_profileSignInFragment"
+            app:destination="@id/profileSignInFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/pinNumberFragment" />
+        <argument
+            android:name="registrationHelper"
+            app:argType="com.rtchubs.restohubs.models.registration.RegistrationHelperModel" />
+    </fragment>
+
+</navigation>

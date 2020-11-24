@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/favorite_nav"
+    app:startDestination="@id/favoriteFragment">
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.rtchubs.restohubs.ui.home.FavoriteFragment"
+        android:label="Pay"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_productDetailsFragment2"
+            app:destination="@id/productDetailsFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_favoriteFragment_to_cartFragment2"
+            app:destination="@id/cartFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <include app:graph="@navigation/drawer_nav_graph" />
+    <fragment
+        android:id="@+id/productDetailsFragment2"
+        android:name="com.rtchubs.restohubs.ui.home.ProductDetailsFragment"
+        android:label="ProductDetailsFragment" >
+        <argument
+            android:name="product"
+            app:argType="com.rtchubs.restohubs.models.Product" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment2"
+        android:name="com.rtchubs.restohubs.ui.cart.CartFragment"
+        android:label="Cart" />
+</navigation>

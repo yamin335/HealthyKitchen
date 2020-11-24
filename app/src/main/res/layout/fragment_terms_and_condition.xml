@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="TermsBinding">
+
+        <variable
+            name="viewModel"
+            type="com.rtchubs.restohubs.ui.terms_and_conditions.TermsViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1E4356"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/terms_and_conditions"
+            app:navigationIcon="@drawable/ic_back"
+            app:titleTextColor="@color/white" />
+
+
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/webView"
+            android:layout_weight="1.0"></WebView>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_accept"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:backgroundTint="#70DB44"
+            android:insetBottom="0dp"
+            android:text="@string/accept"
+            android:textAllCaps="false"
+            android:insetTop="0dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="0dp" />
+
+    </LinearLayout>
+
+</layout>

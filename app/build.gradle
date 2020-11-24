@@ -1,0 +1,315 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+apply plugin: 'kotlin-kapt'
+// Add the Fabric plugin.
+//apply plugin: 'io.fabric'
+android {
+
+    /*signingConfigs {
+        config {
+            storeFile file('../idc_keystore')
+            storePassword 'Idc123$..'
+            keyAlias = 'rtchubs'
+            keyPassword 'Idc123$..'
+        }
+    }*/
+
+    compileSdkVersion build_versions.target_sdk
+
+    defaultConfig {
+        applicationId "com.rtchubs.restohubs"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        kapt {
+            javacOptions {
+                // Increase the max count of errors from annotation processors.
+                // Default is 100.
+                option("-Xmaxerrs", 500)
+            }
+        }
+
+    }
+    //this code for android plugin below 4.0
+    dataBinding {
+        enabled = true
+    }
+
+    /*
+    //this code for android plugin  4.0
+   buildFeatures{
+        dataBinding = true
+        // for view binding :
+         viewBinding = true
+    }*/
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+
+    buildTypes {
+        /*release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }*/
+        debug {
+            manifestPlaceholders.debug = true
+            debuggable true
+            minifyEnabled false
+            //signingConfig signingConfigs.config
+        }
+        release {
+            manifestPlaceholders.debug = false
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            //signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    /*to support localization in playstore version*/
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
+
+
+}
+repositories {
+    mavenCentral()
+
+    flatDir {
+        dirs 'libs'
+    }
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation deps.kotlin.stdlib
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.core_ktx
+    implementation deps.constraint_layout
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    testImplementation deps.junit
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation deps.support.design
+    implementation deps.support.annotations
+    implementation deps.support.legacy_support_v4
+
+    /*navigation*/
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui
+
+    /*dagger*/
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support
+    kapt deps.dagger.compiler
+    kapt deps.dagger.android_support_compiler
+
+    //Room database
+    implementation "androidx.room:room-runtime:2.2.5"
+    implementation "androidx.room:room-ktx:2.2.5"
+    kapt "androidx.room:room-compiler:2.2.5"
+    androidTestImplementation "androidx.room:room-testing:2.2.5"
+
+    //Livedata ktx
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+
+    // Fragment ktx
+    implementation "androidx.fragment:fragment-ktx:1.3.0-beta01"
+    implementation "androidx.fragment:fragment:1.3.0-beta01"
+
+    /*retrofit*/
+    implementation deps.retrofit.runtime
+    api deps.retrofit.converter_gson
+    api deps.retrofit.converter_scalar
+    implementation deps.okhttp_logging_interceptor
+
+    implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+
+    implementation deps.event
+
+    //adding work manager
+    implementation deps.work.runtime_ktx
+
+    // for otp read
+    implementation deps.play_services.base
+    implementation deps.play_services.phone
+
+    //timber for logging
+    implementation deps.timber
+
+    /*for in app update*/
+    implementation deps.play_core
+
+    /*for fcm*/
+    implementation deps.firebase.messaging
+    /*for face detection*/
+//    implementation deps.firebase.ml_vision
+//    implementation deps.firebase.ml_vision_face_model
+    /*picasso*/
+    implementation deps.picasso
+    /*cropper*/
+    api deps.cropper
+
+    // (Recommended) Add the Google Analytics dependency.
+    implementation deps.firebase.analytics
+
+    // Add the Firebase Crashlytics dependency.
+    implementation deps.crashlytics
+
+    /*chrometab*/
+    implementation deps.androidx.browser
+
+    // For Easy permission management
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    implementation deps.androidx.recyclerview
+
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
+    implementation "androidx.recyclerview:recyclerview:1.2.0-alpha03"
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    implementation 'com.hbb20:ccp:2.3.4'
+    implementation 'com.romandanylyk:pageindicatorview:1.0.2@aar'
+    implementation 'com.airbnb.android:lottie:3.4.0'
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+
+
+    // CameraX core library
+    implementation deps.camerax.core
+    // CameraX Camera2 extensions
+    implementation deps.camerax.camera2
+    // CameraX Lifecycle library
+    implementation deps.camerax.lifecycle
+    // CameraX View class
+    implementation deps.camerax.view
+    // CameraX Extensions library
+    implementation deps.camerax.extensions
+    // MLKit Face Recognition features
+    implementation deps.mlkit_face_detect
+    // MLKit Text Recognition features
+    implementation deps.mlkit_text_recognition
+
+    // Glide
+    implementation deps.glide.runtime
+    kapt deps.glide.compiler
+
+    // EventBus
+    implementation 'de.greenrobot:eventbus:2.4.0'
+
+    // NanoTasks
+    implementation 'com.fabiendevos:nanotasks:1.1.0'
+
+    // Joda
+    implementation 'joda-time:joda-time:2.9.3'
+
+    // Floating action button group
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+
+    // Linear layout manager for use wrap_content in RecyclerView
+    implementation 'org.solovyev.android.views:linear-layout-manager:0.5@aar'
+
+    // ReactiveX
+    implementation 'io.reactivex:rxandroid:1.1.0'
+    implementation 'io.reactivex:rxjava:1.1.0'
+    implementation 'com.jakewharton.rxbinding:rxbinding:0.3.0'
+
+    implementation 'com.squareup.okhttp:okhttp-urlconnection:2.7.5'
+    implementation 'com.squareup:otto:1.3.8'
+
+
+    implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
+
+    implementation "com.android.support:support-v4:+"
+    implementation 'com.squareup.picasso:picasso:2.3.2'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
+
+    // Barcode model
+    implementation 'com.google.mlkit:barcode-scanning:16.0.2'
+
+    // Object detection feature with bundled default classifier
+    implementation 'com.google.mlkit:object-detection:16.2.0'
+
+    // Object detection feature with custom classifier support
+    implementation 'com.google.mlkit:object-detection-custom:16.2.0'
+
+    // Face features
+    implementation 'com.google.mlkit:face-detection:16.0.1'
+
+    // Text features
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.0'
+
+    // Image labeling with automl model support
+    implementation 'com.google.mlkit:image-labeling-automl:16.2.0'
+
+    // Image labeling
+    implementation 'com.google.mlkit:image-labeling:16.2.0'
+
+    // Image labeling custom
+    implementation 'com.google.mlkit:image-labeling-custom:16.2.0'
+
+    implementation 'gun0912.ted:tedpermission:2.2.3'
+    implementation 'com.afollestad:viewpagerdots:1.0.0'
+
+    //Exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.12.0'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.12.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.12.0'
+
+    implementation 'com.google.guava:guava:27.0.1-android'
+
+    // ARCore library
+    implementation 'com.google.ar:core:1.2.0'
+    implementation 'com.github.appoly:ARCore-Location:0.2.1'
+    implementation 'de.javagl:obj:0.2.1'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'org.apache.httpcomponents:httpclient:4.5'
+    implementation 'org.apache.httpcomponents:httpcore:4.4.10'
+}
+//apply plugin: 'com.google.gms.google-services'
