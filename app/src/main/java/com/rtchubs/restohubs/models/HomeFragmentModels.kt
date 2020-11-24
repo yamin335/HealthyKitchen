@@ -33,3 +33,5 @@ data class RProduct(val id: Int?, val name: String?, val slug: String?,
                     val rating_count: Number?, val related_ids: List<Int>?,
                     val parent_id: Number?, val purchase_note: String?,
                     val images: List<RImage>?, val menu_order: Int?)
+
+data class CategoryWithProducts(val category: RProductCategory, val products: List<RProduct>)

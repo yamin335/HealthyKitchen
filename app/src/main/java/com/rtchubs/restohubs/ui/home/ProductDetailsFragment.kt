@@ -56,6 +56,7 @@ class ProductDetailsFragment :
         viewDataBinding.toolbar.title = product.name
         viewDataBinding.name = product.name
         viewDataBinding.price = "$${product.mrp}"
+        viewDataBinding.description = product.description
 
         viewModel.toastWarning.observe(viewLifecycleOwner, Observer {
             it?.let { message ->

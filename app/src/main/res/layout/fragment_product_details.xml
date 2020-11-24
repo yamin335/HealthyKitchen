@@ -23,6 +23,10 @@
             type="String" />
 
         <variable
+            name="description"
+            type="String" />
+
+        <variable
             name="price"
             type="String" />
     </data>
@@ -118,15 +122,32 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:ellipsize="end"
                     android:maxLines="2"
+                    android:text="@{name}"
                     android:textColor="#404040"
                     android:textSize="16sp"
-                    android:text="@{name}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rating"
                     tools:text="Female Quin Dress" />
+
+                <TextView
+                    android:id="@+id/productDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="6"
+                    android:text="@{description}"
+                    android:textColor="#666666"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/productName"
+                    tools:text="Product description as usual" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -169,7 +190,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/productName">
+                    app:layout_constraintTop_toBottomOf="@+id/productDescription">
 
                     <TextView
                         android:id="@+id/text1"

@@ -27,7 +27,7 @@ class HomeFragment : BaseFragment<HomeBinding, HomeViewModel>() {
         doctorsListAdapter = DoctorsListAdapter(appExecutors) {
             //navController.navigate(HomeFragmentDirections.actionBooksToChapterList(it))
         }
-        doctorsListAdapter.submitList(viewModel.doctorList)
+        //doctorsListAdapter.submitList(viewModel.doctorList)
 
         viewDataBinding.rvDoctorsList.adapter = doctorsListAdapter
 

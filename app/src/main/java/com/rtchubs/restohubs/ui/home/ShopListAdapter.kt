@@ -14,7 +14,6 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.rtchubs.restohubs.AppExecutors
 import com.rtchubs.restohubs.R
-import com.rtchubs.restohubs.databinding.MoreShoppingListItemBinding
 import com.rtchubs.restohubs.databinding.ShopListItemBinding
 import com.rtchubs.restohubs.models.Merchant
 
