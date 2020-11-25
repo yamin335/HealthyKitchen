@@ -2,6 +2,7 @@ package com.rtchubs.restohubs.ui.home
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
@@ -15,49 +16,63 @@ import com.rtchubs.restohubs.databinding.CategoryItemBinding
 import com.rtchubs.restohubs.models.*
 
 import com.rtchubs.restohubs.util.DataBoundListAdapter
+import kotlinx.android.synthetic.main.list_item_category.view.*
 
 class CategoryWiseProductsAdapter(
     private val appExecutors: AppExecutors,
-    private val viewModel: HomeViewModel,
     private val itemActionCallback: RProductListAdapter.RProductListActionCallback,
     private val itemCallback: ((RProduct) -> Unit)? = null
-) : DataBoundListAdapter<RProductCategory, CategoryItemBinding>(
-    appExecutors = appExecutors, diffCallback = object : DiffUtil.ItemCallback<RProductCategory>() {
-        override fun areItemsTheSame(oldItem: RProductCategory, newItem: RProductCategory): Boolean {
-            return oldItem.id == newItem.id
-        }
+) : RecyclerView.Adapter<CategoryWiseProductsAdapter.ItemViewHolder>() {
 
-        @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(
-            oldItem: RProductCategory,
-            newItem: RProductCategory
-        ): Boolean {
-            return oldItem == newItem
-        }
+    private var ategoryWithProductsList: ArrayList<CategoryWithProducts> = ArrayList()
 
-    }) {
-
-    override fun createBinding(parent: ViewGroup): CategoryItemBinding {
-        return DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context),
-            R.layout.list_item_category, parent, false
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_category, parent, false)
+        return ItemViewHolder(view)
     }
 
-    override fun bind(binding: CategoryItemBinding, position: Int) {
-        val category = getItem(position)
-        binding.level = category.name
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        holder.bind(position)
+    }
 
-        val rProductListAdapter = RProductListAdapter(
-            appExecutors,
-            itemActionCallback
-        ) { item ->
-            itemCallback?.invoke(item)
-        }
+    override fun getItemCount(): Int {
+        return ategoryWithProductsList.size
+    }
 
-        binding.rvProductList.adapter = rProductListAdapter
-        viewModel.getFilteredProduct(category) { products ->
-            rProductListAdapter.submitList(products)
+    fun submitList(ategoryWithProductsList: ArrayList<CategoryWithProducts>) {
+        this.ategoryWithProductsList = ategoryWithProductsList
+        notifyDataSetChanged()
+    }
+
+    fun changeItemAt(tile: CategoryWithProducts, position: Int) {
+        this.ategoryWithProductsList[position] = tile
+        notifyItemChanged(position)
+    }
+
+    fun removeItemAt(position: Int) {
+        this.ategoryWithProductsList.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    fun getTotalItemCount(): Int {
+        return ategoryWithProductsList.size
+    }
+
+    inner class ItemViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(position: Int) {
+            val categoryWithProducts = ategoryWithProductsList[position]
+
+            itemView.categoryName.text = categoryWithProducts.category.name
+
+            val rProductListAdapter = RProductListAdapter(
+                appExecutors,
+                itemActionCallback
+            ) { item ->
+                itemCallback?.invoke(item)
+            }
+
+            itemView.rvProductList.adapter = rProductListAdapter
+            rProductListAdapter.submitList(categoryWithProducts.products)
         }
     }
 }

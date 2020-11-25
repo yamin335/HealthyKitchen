@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="CategoryItemBinding">
-        <variable
-            name="level"
-            type="String" />
     </data>
 
 
@@ -21,7 +18,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/muli_bold"
             android:ellipsize="end"
-            android:text="@{level}"
             android:textColor="#404040"
             android:textStyle="bold"
             android:layout_marginStart="16dp"

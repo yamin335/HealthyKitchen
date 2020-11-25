@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.rtchubs.restohubs.BR
 import com.rtchubs.restohubs.R
 import com.rtchubs.restohubs.databinding.HomeFragmentBinding
+import com.rtchubs.restohubs.models.CategoryWithProducts
 import com.rtchubs.restohubs.models.Product
 import com.rtchubs.restohubs.models.RProduct
 import com.rtchubs.restohubs.ui.LogoutHandlerCallback
@@ -18,6 +19,7 @@ import com.rtchubs.restohubs.ui.common.BaseFragment
 import com.rtchubs.restohubs.util.showSuccessToast
 import com.rtchubs.restohubs.util.showWarningToast
 import java.util.*
+import kotlin.collections.ArrayList
 
 class Home2Fragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
     override val bindingVariable: Int
@@ -80,7 +82,7 @@ class Home2Fragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
             }
         })
 
-        categoryWiseProductsAdapter = CategoryWiseProductsAdapter(appExecutors, viewModel, object : RProductListAdapter.RProductListActionCallback {
+        categoryWiseProductsAdapter = CategoryWiseProductsAdapter(appExecutors, object : RProductListAdapter.RProductListActionCallback {
             override fun addToFavorite(item: RProduct) {
                 val product = Product(item.id ?: 0, item.name, "", Html.fromHtml(item.description).toString().toLowerCase(
                     Locale.ROOT), 0.0, 0.0,
@@ -110,6 +112,19 @@ class Home2Fragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
 
         viewDataBinding.rvCategoryList.adapter = categoryWiseProductsAdapter
 
+        viewModel.loadDataToAdapter.observe(viewLifecycleOwner, Observer {
+            it?.let { itemCount ->
+                if (itemCount == viewModel.totalCategory) {
+                    HomeViewModel.isDataLoaded = true
+                    categoryWiseProductsAdapter.submitList(HomeViewModel.allCategoryWiseProducts as ArrayList<CategoryWithProducts>)
+                    viewDataBinding.loader.visibility = View.GONE
+                    viewModel.loadDataToAdapter.postValue(null)
+                    viewModel.filteredProduct.postValue(null)
+                    viewModel.filteredProductCategories.postValue(null)
+                }
+            }
+        })
+
         viewDataBinding.appLogo.setOnClickListener {
             drawerListener?.toggleNavDrawer()
         }
@@ -130,13 +145,28 @@ class Home2Fragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
             }
         })
 
-        viewModel.filteredProductCategories.observe(viewLifecycleOwner, Observer {
-            it?.let { list ->
-                val filteredList = list.filter { value -> value.name != "Uncategorized" }
-                categoryWiseProductsAdapter.submitList(filteredList)
+        viewModel.filteredProduct.observe(viewLifecycleOwner, Observer {
+            it?.let { product ->
+                HomeViewModel.allCategoryWiseProducts?.add(product)
             }
         })
 
-        viewModel.getFilteredProductCategories(mapOf("per_page" to "50"))
+        viewModel.filteredProductCategories.observe(viewLifecycleOwner, Observer {
+            it?.let { list ->
+                val filteredList = list.filter { value -> value.name != "Uncategorized" }
+                viewModel.totalCategory = filteredList.size
+                for (category in filteredList) {
+                    viewModel.getFilteredProduct(category)
+                }
+            }
+        })
+
+        if (HomeViewModel.isDataLoaded) {
+            categoryWiseProductsAdapter.submitList(HomeViewModel.allCategoryWiseProducts as ArrayList<CategoryWithProducts>)
+        } else {
+            viewDataBinding.loader.visibility = View.VISIBLE
+            HomeViewModel.allCategoryWiseProducts = ArrayList()
+            viewModel.getFilteredProductCategories(mapOf("per_page" to "50"))
+        }
     }
 }

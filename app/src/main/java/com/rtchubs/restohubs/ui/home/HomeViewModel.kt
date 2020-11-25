@@ -33,6 +33,17 @@ class HomeViewModel @Inject constructor(
     private val favoriteDao: FavoriteDao
 ) : BaseViewModel(application) {
 
+    companion object {
+        var allCategoryWiseProducts: ArrayList<CategoryWithProducts>? = null
+        var isDataLoaded = false
+    }
+
+    var totalCategory = 0
+    var countCategory = 0
+    val loadDataToAdapter: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
+    }
+
     val cartItemCount: LiveData<Int> = liveData {
         cartDao.getCartItemsCount().collect { count ->
             emit(count)
@@ -41,6 +52,10 @@ class HomeViewModel @Inject constructor(
 
     val filteredProductCategories: MutableLiveData<List<RProductCategory>> by lazy {
         MutableLiveData<List<RProductCategory>>()
+    }
+
+    val filteredProduct: MutableLiveData<CategoryWithProducts> by lazy {
+        MutableLiveData<CategoryWithProducts>()
     }
 
     fun addToFavorite(product: Product) {
@@ -107,16 +122,14 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getFilteredProduct(category: RProductCategory, callback: (List<RProduct>) -> Unit): LiveData<List<RProduct>> {
-        val filteredProduct: MutableLiveData<List<RProduct>> by lazy {
-            MutableLiveData<List<RProduct>>()
-        }
+    fun getFilteredProduct(category: RProductCategory) {
         val filter: Map<String, String> = mapOf("category" to category.id.toString())
         if (checkNetworkStatus()) {
             val handler = CoroutineExceptionHandler { _, exception ->
                 exception.printStackTrace()
                 apiCallStatus.postValue(ApiCallStatus.ERROR)
                 toastError.postValue(AppConstants.serverConnectionErrorMessage)
+                loadDataToAdapter.postValue(++countCategory)
             }
 
             apiCallStatus.postValue(ApiCallStatus.LOADING)
@@ -124,20 +137,19 @@ class HomeViewModel @Inject constructor(
                 when (val apiResponse = ApiResponse.create(repository.requestFilteredProduct(filter))) {
                     is ApiSuccessResponse -> {
                         apiCallStatus.postValue(ApiCallStatus.SUCCESS)
-                        filteredProduct.postValue(apiResponse.body)
-                        viewModelScope.launch(Dispatchers.Main.immediate) {
-                            callback.invoke(apiResponse.body)
-                        }
+                        filteredProduct.postValue(CategoryWithProducts(category, apiResponse.body))
+                        loadDataToAdapter.postValue(++countCategory)
                     }
                     is ApiEmptyResponse -> {
                         apiCallStatus.postValue(ApiCallStatus.EMPTY)
+                        loadDataToAdapter.postValue(++countCategory)
                     }
                     is ApiErrorResponse -> {
                         apiCallStatus.postValue(ApiCallStatus.ERROR)
+                        loadDataToAdapter.postValue(++countCategory)
                     }
                 }
             }
         }
-        return filteredProduct
     }
 }
