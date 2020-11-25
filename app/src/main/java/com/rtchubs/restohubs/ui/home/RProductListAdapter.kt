@@ -57,7 +57,7 @@ class RProductListAdapter(
         val context = binding.root.context
         val item = getItem(position)
         binding.productName = item.name
-        binding.productDescription = Html.fromHtml(item.description).toString().toLowerCase(Locale.ROOT)
+        //binding.productDescription = Html.fromHtml(item.description).toString().toLowerCase(Locale.ROOT)
         binding.imageUrl = item.images?.first()?.src
         binding.productPrice = "$ ${item.price}"
 

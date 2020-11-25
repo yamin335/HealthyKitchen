@@ -10,9 +10,6 @@
             name="productName"
             type="String" />
         <variable
-            name="productDescription"
-            type="String" />
-        <variable
             name="productPrice"
             type="String" />
         <variable
@@ -25,15 +22,14 @@
     </data>
 
     <com.google.android.material.circularreveal.cardview.CircularRevealCardView
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="5dp"
-        app:contentPadding="8dp">
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/rColor1"
+        app:cardCornerRadius="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -45,6 +41,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="2dp"
                 app:cardElevation="0dp"
+                android:layout_margin="8dp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
@@ -54,10 +51,10 @@
 
                 <ImageView
                     android:id="@+id/logo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
+                    android:scaleType="centerCrop"
                     app:srcCompat="@drawable/image_placeholder"
                     app:imageRequestListener="@{imageRequestListener}"
                     app:imageUrl="@{imageUrl}"/>
@@ -69,58 +66,26 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/name"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey_1"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/muli_bold"
-                        android:maxLines="3"
-                        android:layout_marginTop="5dp"
-                        android:paddingStart="0dp"
-                        android:paddingEnd="4dp"
-                        android:text="@{productName}"
-                        tools:text="Product Name Product Name Product Name Product Name" />
-
-                    <TextView
-                        android:id="@+id/description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/muli_bold"
-                        android:maxLines="4"
-                        android:layout_marginTop="5dp"
-                        android:paddingStart="0dp"
-                        android:paddingEnd="4dp"
-                        android:text="@{productDescription}"
-                        tools:text="Product Description Product Description Product Description Product Description Product Description" />
-
-                    <TextView
-                        android:id="@+id/price"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/muli_bold"
-                        android:maxLines="1"
-                        android:paddingStart="0dp"
-                        android:paddingEnd="4dp"
-                        android:text="@{productPrice}"
-                        android:textColor="#404040"
-                        tools:text="$120.99" />
-
-                </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/muli_bold"
+                    android:maxLines="1"
+                    android:textStyle="bold"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    android:text="@{productName}"
+                    tools:text="Product Name Product Name Product Name Product Name" />
 
                 <ImageView
                     android:id="@+id/menu"
@@ -131,15 +96,36 @@
                     android:clickable="true"
                     android:cropToPadding="true"
                     android:focusable="true"
-                    android:layout_marginTop="8dp"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:layout_marginBottom="8dp"
+                    app:tint="@android:color/white"
                     android:scaleX="1.3"
                     android:scaleY="1.3"
                     app:srcCompat="@drawable/ic_baseline_more_vert_24" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/muli_bold"
+                android:maxLines="1"
+                android:paddingStart="0dp"
+                android:paddingEnd="4dp"
+                android:text="@{productPrice}"
+                android:textColor="#404040"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="$120.99" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.circularreveal.cardview.CircularRevealCardView>

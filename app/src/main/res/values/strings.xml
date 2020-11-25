@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     // QPay String Resources
-    <string name="app_name">RestoHubs</string>
+    <string name="app_name">Healthy Kitchen33</string>
     <string name="internet_error_msg">Please check Your internet connection!</string>
     <string name="error_invalid_member">Invalid Member ID</string>
     <string name="error_invalid_password">Wrong Pin Code</string>

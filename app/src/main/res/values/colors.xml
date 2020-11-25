@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    //Restohubs
+    <color name="rColor1">#C90006</color>
+
     // eDokanPat
     <color name="color1">#6E757C</color>
     <color name="themeColor">#161E2C</color>
