@@ -2,8 +2,11 @@ package com.rtchubs.restohubs.ui
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -67,6 +70,12 @@ class MainActivity : DaggerAppCompatActivity(), LogoutHandlerCallback, NavDrawer
     private var loginNavHostFragment: NavHostFragment? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            window.statusBarColor = Color.WHITE
+        }
+
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this@MainActivity, R.layout.activity_main)

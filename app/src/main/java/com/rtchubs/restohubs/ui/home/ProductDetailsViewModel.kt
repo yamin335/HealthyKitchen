@@ -25,6 +25,10 @@ class ProductDetailsViewModel @Inject constructor(
         }
     }
 
+    val showSnackbar: MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
+
 //    fun doesItemExistsInCart(item: Product): LiveData<Boolean> {
 //        val result = MutableLiveData<Boolean>()
 //        val handler = CoroutineExceptionHandler { _, exception ->
@@ -62,7 +66,8 @@ class ProductDetailsViewModel @Inject constructor(
             viewModelScope.launch(handler) {
                 val response = cartDao.addItemToCart(CartItem(product.id, product, quantity))
                 if (response == -1L) {
-                    toastWarning.postValue("Already added to cart!")
+                    //toastWarning.postValue("Already added to cart!")
+                    incrementCartItemByQuantity(product.id, quantity)
                 } else {
                     toastSuccess.postValue("Added to cart")
                 }
@@ -88,6 +93,23 @@ class ProductDetailsViewModel @Inject constructor(
             }
         } catch (e: SQLiteException) {
             e.printStackTrace()
+        }
+    }
+
+    fun incrementCartItemByQuantity(id: Int, quantity: Int) {
+        val handler = CoroutineExceptionHandler { _, exception ->
+            exception.printStackTrace()
+        }
+
+        viewModelScope.launch(handler) {
+            cartDao.increaseProductByQuantity(id, quantity)
+            toastSuccess.postValue("Added to cart")
+            showSnackbar.postValue(true)
+//            if (response == -1L) {
+//                toastSuccess.postValue("Please try again later!")
+//            } else {
+//                toastSuccess.postValue("Added to cart")
+//            }
         }
     }
 }

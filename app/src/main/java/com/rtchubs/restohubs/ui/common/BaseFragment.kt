@@ -189,15 +189,15 @@ abstract class BaseFragment<T : ViewDataBinding, V : ViewModel> : DaggerFragment
         }
     }*/
 
-    fun updateStatusBarBackgroundColor(color: String) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            try {
-                requireActivity().window.statusBarColor = Color.parseColor(color)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
+//    fun updateStatusBarBackgroundColor(color: String) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            try {
+//                requireActivity().window.statusBarColor = Color.parseColor(color)
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//            }
+//        }
+//    }
 
     protected fun showToast(msg: Int) {
         try {

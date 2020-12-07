@@ -1,5 +1,6 @@
 package com.rtchubs.restohubs.ui.home
 
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.*
@@ -11,6 +12,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.google.android.material.snackbar.Snackbar
 import com.rtchubs.restohubs.BR
 import com.rtchubs.restohubs.R
 import com.rtchubs.restohubs.databinding.ProductDetailsFragmentBinding
@@ -70,6 +72,21 @@ class ProductDetailsFragment :
                 showSuccessToast(requireContext(), message)
                 viewModel.toastSuccess.postValue(null)
             }
+        })
+
+        viewModel.showSnackbar.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it) {
+                    val snackBar = Snackbar.make(viewDataBinding.root, "Checkout Now?", Snackbar.LENGTH_LONG)
+                    snackBar.setAction("Yes") {
+                        // Go to cart for checkout
+                        navController.navigate(ProductDetailsFragmentDirections.actionProductDetailsFragmentToCartFragment())
+                    }
+                    snackBar.setActionTextColor(Color.YELLOW)
+                    snackBar.show()
+                }
+            }
+            viewModel.showSnackbar.postValue(null)
         })
 
         pdImageSampleAdapter = PDImageSampleAdapter(

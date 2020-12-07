@@ -53,7 +53,7 @@ class ViewPagerFragment : BaseFragment<ViewPagerBinding, ViewPagerViewModel>() {
             navController.navigate(ViewPagerFragmentDirections.actionViewPagerFragmentToSignInFragment())
         }
 
-        updateStatusBarBackgroundColor("#1E4356")
+        //updateStatusBarBackgroundColor("#1E4356")
     }
 
 

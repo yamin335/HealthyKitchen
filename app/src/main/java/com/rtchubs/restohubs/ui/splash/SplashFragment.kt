@@ -54,7 +54,7 @@ class SplashFragment : BaseFragment<SplashBinding, SplashViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        updateStatusBarBackgroundColor("#1E4356")
+        //updateStatusBarBackgroundColor("#1E4356")
 
         animation = AnimationUtils.loadAnimation(requireContext(), R.anim.logo_animation)
         animation.setAnimationListener(object : Animation.AnimationListener {

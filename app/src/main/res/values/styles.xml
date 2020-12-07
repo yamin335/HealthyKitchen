@@ -137,8 +137,8 @@
         <!-- THIS is where you can color the arrow! -->
         <!-- <item name="android:textColorPrimary">@color/light_green</item>-->
 <!--         <item name="colorControlNormal">@color/albumColorPrimary</item>-->
-        <item name="colorControlNormal">@color/white</item>
-        <item name="colorControlHighlight">@color/white</item>
+        <item name="colorControlNormal">@color/accent</item>
+        <item name="colorControlHighlight">@color/accent</item>
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -156,7 +156,7 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowAnimationStyle">@null</item>
-        <item name="android:windowBackground">@color/themeColor</item>
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 
 

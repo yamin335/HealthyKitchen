@@ -25,7 +25,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/more_nav"
-        android:title="@string/more"
-        android:icon="@drawable/ic_outline_border_all_24"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_perm_identity_24"
         app:showAsAction="always"/>
 </menu>

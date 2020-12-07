@@ -1,12 +1,14 @@
 package com.rtchubs.restohubs.ui.home
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import android.view.View
 import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import com.rtchubs.restohubs.BR
 import com.rtchubs.restohubs.R
 import com.rtchubs.restohubs.databinding.HomeFragmentBinding
@@ -80,6 +82,21 @@ class Home2Fragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
                 showSuccessToast(requireContext(), message)
                 viewModel.toastSuccess.postValue(null)
             }
+        })
+
+        viewModel.showSnackbar.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (it) {
+                    val snackBar = Snackbar.make(viewDataBinding.root, "Checkout Now?", Snackbar.LENGTH_LONG)
+                    snackBar.setAction("Yes") {
+                        // Go to cart for checkout
+                        navController.navigate(Home2FragmentDirections.actionHome2FragmentToCartFragment())
+                    }
+                    snackBar.setActionTextColor(Color.YELLOW)
+                    snackBar.show()
+                }
+            }
+            viewModel.showSnackbar.postValue(null)
         })
 
         categoryWiseProductsAdapter = CategoryWiseProductsAdapter(appExecutors, object : RProductListAdapter.RProductListActionCallback {

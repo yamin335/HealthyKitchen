@@ -28,10 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_alignParentTop="true"
-            android:background="@color/themeColor"
+            android:background="@android:color/white"
             android:theme="@style/AppTheme.AppBarOverlay"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/accent" />
 
         <ProgressBar
             android:id="@+id/loader"

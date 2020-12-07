@@ -19,7 +19,7 @@ class PreOnBoardingFragment() : BaseFragment<PreOnBoardBinding, PreOnBoardingVie
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateStatusBarBackgroundColor("#689F38")
+        //updateStatusBarBackgroundColor("#689F38")
         viewDataBinding.btnOnboardingStart.setOnClickListener {
         }
     }

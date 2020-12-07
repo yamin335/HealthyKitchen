@@ -29,4 +29,24 @@ class CartViewModel @Inject constructor(private val application: Application, pr
             cartDao.deleteCartItem(item)
         }
     }
+
+    fun incrementCartItemQuantity(id: Int) {
+        val handler = CoroutineExceptionHandler { _, exception ->
+            exception.printStackTrace()
+        }
+
+        viewModelScope.launch(handler) {
+            cartDao.increaseProductQuantity(id)
+        }
+    }
+
+    fun decrementCartItemQuantity(id: Int) {
+        val handler = CoroutineExceptionHandler { _, exception ->
+            exception.printStackTrace()
+        }
+
+        viewModelScope.launch(handler) {
+            cartDao.decreaseProductQuantity(id)
+        }
+    }
 }

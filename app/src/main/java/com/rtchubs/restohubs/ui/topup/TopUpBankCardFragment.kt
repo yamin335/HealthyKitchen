@@ -23,7 +23,7 @@ class TopUpBankCardFragment : BaseFragment<TopUpBankCardFragmentBinding, TopUpBa
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateStatusBarBackgroundColor("#1E4356")
+        //updateStatusBarBackgroundColor("#1E4356")
         registerToolbar(viewDataBinding.toolbar)
 
         val helper = args.topUpHelper

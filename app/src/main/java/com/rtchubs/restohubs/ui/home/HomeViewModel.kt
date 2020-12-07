@@ -58,6 +58,10 @@ class HomeViewModel @Inject constructor(
         MutableLiveData<CategoryWithProducts>()
     }
 
+    val showSnackbar: MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
+
     fun addToFavorite(product: Product) {
         try {
             val handler = CoroutineExceptionHandler { _, exception ->
@@ -86,13 +90,23 @@ class HomeViewModel @Inject constructor(
             viewModelScope.launch(handler) {
                 val response = cartDao.addItemToCart(CartItem(product.id, product, quantity))
                 if (response == -1L) {
-                    toastWarning.postValue("Already added to cart!")
-                } else {
-                    toastSuccess.postValue("Added to cart")
+                    incrementCartItemQuantity(product.id)
                 }
+                toastSuccess.postValue("Added to cart")
+                showSnackbar.postValue(true)
             }
         } catch (e: SQLiteException) {
             e.printStackTrace()
+        }
+    }
+
+    fun incrementCartItemQuantity(id: Int) {
+        val handler = CoroutineExceptionHandler { _, exception ->
+            exception.printStackTrace()
+        }
+
+        viewModelScope.launch(handler) {
+            cartDao.increaseProductQuantity(id)
         }
     }
 

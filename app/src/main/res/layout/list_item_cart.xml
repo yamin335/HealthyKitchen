@@ -127,13 +127,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear2"
+                android:id="@+id/linear5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/remove"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/linear"
                 app:layout_constraintTop_toBottomOf="@+id/linear"
@@ -143,16 +145,68 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:textSize="12sp"
-                    android:text="Quantity:" />
+                    android:text="Quantity:"
+                    android:textSize="12sp" />
+
+                <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+                    android:id="@+id/decrementQuantity"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="#DDDDDD"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="0dp"
+                    app:rippleColor="@color/themeButtonColor">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:elevation="0dp"
+                        app:srcCompat="@drawable/ic_baseline_remove_24" />
+
+                </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
                 <TextView
+                    android:id="@+id/quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@drawable/rounded_rectangle_7"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingStart="16dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="2dp"
                     android:text="@{item.quantity.toString()}"
                     android:textColor="#404040"
                     android:textSize="12sp"
                     tools:text="5" />
+
+                <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+                    android:id="@+id/incrementQuantity"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="4dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardBackgroundColor="#DDDDDD"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="0dp"
+                    app:rippleColor="@color/themeButtonColor">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:elevation="0dp"
+                        app:srcCompat="@drawable/ic_baseline_add_24" />
+
+                </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
             </LinearLayout>
 

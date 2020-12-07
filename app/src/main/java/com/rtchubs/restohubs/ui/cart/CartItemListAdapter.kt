@@ -22,6 +22,7 @@ import com.rtchubs.restohubs.util.DataBoundListAdapter
 
 class CartItemListAdapter(
     private val appExecutors: AppExecutors,
+    private val cartItemActionCallback: CartItemActionCallback,
     private val itemCallback: ((CartItem) -> Unit)? = null
 
 ) : DataBoundListAdapter<CartItem, CartListItemBinding>(
@@ -44,7 +45,7 @@ class CartItemListAdapter(
 
     val onClicked = MutableLiveData<CartItem>()
     override fun createBinding(parent: ViewGroup): CartListItemBinding {
-        return DataBindingUtil.inflate<CartListItemBinding>(
+        return DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             R.layout.list_item_cart, parent, false
         )
@@ -69,7 +70,20 @@ class CartItemListAdapter(
         binding.remove.setOnClickListener {
             itemCallback?.invoke(item)
         }
+
+        binding.incrementQuantity.setOnClickListener {
+            cartItemActionCallback.incrementCartItemQuantity(item.id)
+        }
+        binding.decrementQuantity.setOnClickListener {
+            if (item.quantity ?:0 >= 1) {
+                cartItemActionCallback.decrementCartItemQuantity(item.id)
+            }
+        }
     }
 
+    interface CartItemActionCallback {
+        fun incrementCartItemQuantity(id: Int)
+        fun decrementCartItemQuantity(id: Int)
+    }
 
 }

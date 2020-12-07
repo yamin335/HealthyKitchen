@@ -39,7 +39,7 @@ class SignInFragment : BaseFragment<SignInBinding, SignInViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateStatusBarBackgroundColor("#1E4356")
+        //updateStatusBarBackgroundColor("#1E4356")
         registerToolbar(viewDataBinding.toolbar)
 
         viewModel.mobileNo.observe(viewLifecycleOwner, Observer {  mobileNo ->
