@@ -1,4 +1,7 @@
 package com.rtchubs.restohubs.util
+
+import com.rtchubs.restohubs.models.RProduct
+
 object AppConstants {
     const val PREF_NAME = "QPayCredentials"
     const val COUNTRY_CODE = "+88"
@@ -10,4 +13,6 @@ object AppConstants {
     const val otpWaitMessage = "Please wait until you get an OTP code!"
     const val registrationSuccessMessage = "Welcome! to QPay. Please login to continue."
     const val saveSuccessfulMessage = "Saved Successfully!"
+
+    var relatedProductList = ArrayList<RProduct>()
 }

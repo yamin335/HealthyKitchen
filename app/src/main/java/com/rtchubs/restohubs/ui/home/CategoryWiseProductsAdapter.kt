@@ -14,6 +14,7 @@ import com.rtchubs.restohubs.AppExecutors
 import com.rtchubs.restohubs.R
 import com.rtchubs.restohubs.databinding.CategoryItemBinding
 import com.rtchubs.restohubs.models.*
+import com.rtchubs.restohubs.util.AppConstants
 
 import com.rtchubs.restohubs.util.DataBoundListAdapter
 import kotlinx.android.synthetic.main.list_item_category.view.*
@@ -69,6 +70,7 @@ class CategoryWiseProductsAdapter(
                 itemActionCallback
             ) { item ->
                 itemCallback?.invoke(item)
+                AppConstants.relatedProductList = categoryWithProducts.products as ArrayList<RProduct>
             }
 
             itemView.rvProductList.adapter = rProductListAdapter

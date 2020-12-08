@@ -3,6 +3,7 @@ package com.rtchubs.restohubs.ui.home
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.Html
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.viewModels
@@ -17,13 +18,18 @@ import com.rtchubs.restohubs.BR
 import com.rtchubs.restohubs.R
 import com.rtchubs.restohubs.databinding.ProductDetailsFragmentBinding
 import com.rtchubs.restohubs.local_db.dao.CartDao
+import com.rtchubs.restohubs.models.Product
+import com.rtchubs.restohubs.models.RProduct
 import com.rtchubs.restohubs.ui.common.BaseFragment
+import com.rtchubs.restohubs.util.AppConstants
 import com.rtchubs.restohubs.util.showSuccessToast
 import com.rtchubs.restohubs.util.showWarningToast
+import kotlinx.android.synthetic.main.list_item_category.view.*
+import java.util.*
 import javax.inject.Inject
 
-class ProductDetailsFragment :
-    BaseFragment<ProductDetailsFragmentBinding, ProductDetailsViewModel>() {
+class ProductDetailsFragment : BaseFragment<ProductDetailsFragmentBinding, ProductDetailsViewModel>() {
+
     override val bindingVariable: Int
         get() = BR.viewModel
     override val layoutId: Int
@@ -53,12 +59,15 @@ class ProductDetailsFragment :
         super.onViewCreated(view, savedInstanceState)
         registerToolbar(viewDataBinding.toolbar)
 
-        val product = args.product
+        viewDataBinding.decrementQuantity.setOnClickListener {
+            if (quantity > 1) --quantity
+            viewDataBinding.quantity.text = quantity.toString()
+        }
 
-        viewDataBinding.toolbar.title = product.name
-        viewDataBinding.name = product.name
-        viewDataBinding.price = "$${product.mrp}"
-        viewDataBinding.description = product.description
+        viewDataBinding.incrementQuantity.setOnClickListener {
+            ++quantity
+            viewDataBinding.quantity.text = quantity.toString()
+        }
 
         viewModel.toastWarning.observe(viewLifecycleOwner, Observer {
             it?.let { message ->
@@ -88,6 +97,31 @@ class ProductDetailsFragment :
             }
             viewModel.showSnackbar.postValue(null)
         })
+
+        val rProductListAdapter = RProductSmallListAdapter(
+            appExecutors,
+            null
+        ) { item ->
+            val product = Product(item.id ?: 0, item.name, "", Html.fromHtml(item.description).toString().toLowerCase(
+                Locale.ROOT), 0.0, 0.0,
+                item.price?.toDouble(), "", item.images?.first()?.src,
+                "", "", "", "",
+                "", 0, 0, "", "", null)
+            initUI(product)
+        }
+
+        viewDataBinding.rvProductList.adapter = rProductListAdapter
+        rProductListAdapter.submitList(AppConstants.relatedProductList)
+
+        val product = args.product
+        initUI(product)
+    }
+
+    private fun initUI(product: Product) {
+        viewDataBinding.toolbar.title = product.name
+        viewDataBinding.name = product.name
+        viewDataBinding.price = "$${product.mrp}"
+        viewDataBinding.description = product.description
 
         pdImageSampleAdapter = PDImageSampleAdapter(
             appExecutors
@@ -133,17 +167,8 @@ class ProductDetailsFragment :
 
         pdSizeChooserAdapter.submitList(listOf("XS", "S", "M", "L", "XL", "XXL", "3XL"))
 
+        quantity = 1
         viewDataBinding.quantity.text = quantity.toString()
-
-        viewDataBinding.decrementQuantity.setOnClickListener {
-            if (quantity > 1) --quantity
-            viewDataBinding.quantity.text = quantity.toString()
-        }
-
-        viewDataBinding.incrementQuantity.setOnClickListener {
-            ++quantity
-            viewDataBinding.quantity.text = quantity.toString()
-        }
 
         viewDataBinding.addToCart.setOnClickListener {
             if (alreadyAddedToCart) {
