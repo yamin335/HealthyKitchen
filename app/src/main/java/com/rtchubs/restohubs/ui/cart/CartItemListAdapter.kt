@@ -19,6 +19,7 @@ import com.rtchubs.restohubs.databinding.LayoutBankListRowBinding
 import com.rtchubs.restohubs.local_db.dbo.CartItem
 
 import com.rtchubs.restohubs.util.DataBoundListAdapter
+import com.rtchubs.restohubs.util.toRounded
 
 class CartItemListAdapter(
     private val appExecutors: AppExecutors,
@@ -55,6 +56,7 @@ class CartItemListAdapter(
     override fun bind(binding: CartListItemBinding, position: Int) {
         val item = getItem(position)
         binding.item = item
+        binding.price = item.product.mrp?.toRounded(2).toString()
 
         binding.imageRequestListener = object: RequestListener<Drawable> {
             override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {

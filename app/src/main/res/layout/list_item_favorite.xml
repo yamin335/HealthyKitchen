@@ -13,6 +13,10 @@
             type="String" />
 
         <variable
+            name="price"
+            type="String" />
+
+        <variable
             name="imageRequestListener"
             type="com.bumptech.glide.request.RequestListener&lt;Drawable>" />
     </data>
@@ -91,7 +95,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{item.mrp.toString()}"
+                    android:text="@{price}"
                     android:textColor="#404040"
                     android:textSize="12sp"
                     tools:text="12000.00" />

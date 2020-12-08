@@ -21,7 +21,9 @@ import com.rtchubs.restohubs.databinding.ProductItemBinding
 import com.rtchubs.restohubs.databinding.ProductSmallItemBinding
 import com.rtchubs.restohubs.models.RProduct
 import com.rtchubs.restohubs.util.DataBoundListAdapter
+import com.rtchubs.restohubs.util.toRounded
 import kotlinx.android.synthetic.main.popup_menu_product_item.view.*
+import java.lang.Exception
 
 class RProductSmallListAdapter(
     appExecutors: AppExecutors,
@@ -58,7 +60,9 @@ class RProductSmallListAdapter(
         binding.productName = item.name
         //binding.productDescription = Html.fromHtml(item.description).toString().toLowerCase(Locale.ROOT)
         binding.imageUrl = item.images?.first()?.src
-        binding.productPrice = "$ ${item.price}"
+
+        val price = if (item.price == null || item.price == "") 0.0 else item.price.toDouble().toRounded(2)
+        binding.productPrice = "$ $price"
 
         binding.root.setOnClickListener {
             itemCallback?.invoke(item)

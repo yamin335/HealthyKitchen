@@ -10,6 +10,7 @@ import com.rtchubs.restohubs.databinding.CartFragmentBinding
 import com.rtchubs.restohubs.databinding.MoreFragmentBinding
 import com.rtchubs.restohubs.databinding.SetAFragmentBinding
 import com.rtchubs.restohubs.ui.common.BaseFragment
+import com.rtchubs.restohubs.util.toRounded
 
 class CartFragment : BaseFragment<CartFragmentBinding, CartViewModel>() {
 
@@ -61,7 +62,7 @@ class CartFragment : BaseFragment<CartFragmentBinding, CartViewModel>() {
                         val quantity = item.quantity ?: 0
                         total += price * quantity
                     }
-                    viewDataBinding.totalPrice = total.toString()
+                    viewDataBinding.totalPrice = total.toRounded(2).toString()
                 }
             }
         })

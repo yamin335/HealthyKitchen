@@ -21,6 +21,7 @@ import com.rtchubs.restohubs.databinding.ShopListItemBinding
 
 import com.rtchubs.restohubs.models.Product
 import com.rtchubs.restohubs.util.DataBoundListAdapter
+import com.rtchubs.restohubs.util.toRounded
 
 class FavoriteListAdapter(
     private val appExecutors: AppExecutors,
@@ -57,6 +58,7 @@ class FavoriteListAdapter(
         val item = getItem(position)
         binding.item = item
         binding.imageUrl = item.thumbnail
+        binding.price = item.mrp?.toRounded(2).toString()
 
         binding.root.setOnClickListener {
             itemCallback?.invoke(item)

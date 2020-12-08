@@ -33,6 +33,12 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
+import java.math.BigDecimal
+import java.math.RoundingMode
+
+fun Double.toRounded(digit: Int): Double {
+    return BigDecimal(this).setScale(digit, RoundingMode.HALF_UP).toDouble()
+}
 
 fun Context.colorList(id: Int): ColorStateList {
     return ColorStateList.valueOf(ContextCompat.getColor(this, id))

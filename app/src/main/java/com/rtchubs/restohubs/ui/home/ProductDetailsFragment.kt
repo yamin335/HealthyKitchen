@@ -24,6 +24,7 @@ import com.rtchubs.restohubs.ui.common.BaseFragment
 import com.rtchubs.restohubs.util.AppConstants
 import com.rtchubs.restohubs.util.showSuccessToast
 import com.rtchubs.restohubs.util.showWarningToast
+import com.rtchubs.restohubs.util.toRounded
 import kotlinx.android.synthetic.main.list_item_category.view.*
 import java.util.*
 import javax.inject.Inject
@@ -102,9 +103,10 @@ class ProductDetailsFragment : BaseFragment<ProductDetailsFragmentBinding, Produ
             appExecutors,
             null
         ) { item ->
+            val price = if (item.price == null || item.price == "") 0.0 else item.price.toDouble()
             val product = Product(item.id ?: 0, item.name, "", Html.fromHtml(item.description).toString().toLowerCase(
                 Locale.ROOT), 0.0, 0.0,
-                item.price?.toDouble(), "", item.images?.first()?.src,
+                price, "", item.images?.first()?.src,
                 "", "", "", "",
                 "", 0, 0, "", "", null)
             initUI(product)
@@ -120,7 +122,7 @@ class ProductDetailsFragment : BaseFragment<ProductDetailsFragmentBinding, Produ
     private fun initUI(product: Product) {
         viewDataBinding.toolbar.title = product.name
         viewDataBinding.name = product.name
-        viewDataBinding.price = "$${product.mrp}"
+        viewDataBinding.price = "$${product.mrp?.toRounded(2).toString()}"
         viewDataBinding.description = product.description
 
         pdImageSampleAdapter = PDImageSampleAdapter(

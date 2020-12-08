@@ -101,27 +101,30 @@ class Home2Fragment : BaseFragment<HomeFragmentBinding, HomeViewModel>() {
 
         categoryWiseProductsAdapter = CategoryWiseProductsAdapter(appExecutors, object : RProductListAdapter.RProductListActionCallback {
             override fun addToFavorite(item: RProduct) {
+                val price = if (item.price == null || item.price == "") 0.0 else item.price.toDouble()
                 val product = Product(item.id ?: 0, item.name, "", Html.fromHtml(item.description).toString().toLowerCase(
                     Locale.ROOT), 0.0, 0.0,
-                    item.price?.toDouble(), "", item.images?.first()?.src,
+                    price, "", item.images?.first()?.src,
                     "", "", "", "",
                     "", 0, 0, "", "", null)
                 viewModel.addToFavorite(product)
             }
 
             override fun addToCart(item: RProduct) {
+                val price = if (item.price == null || item.price == "") 0.0 else item.price.toDouble()
                 val product = Product(item.id ?: 0, item.name, "", Html.fromHtml(item.description).toString().toLowerCase(
                     Locale.ROOT), 0.0, 0.0,
-                    item.price?.toDouble(), "", item.images?.first()?.src,
+                    price, "", item.images?.first()?.src,
                     "", "", "", "",
                     "", 0, 0, "", "", null)
                 viewModel.addToCart(product, 1)
             }
 
         }) { rProduct ->
+            val price = if (rProduct.price == null || rProduct.price == "") 0.0 else rProduct.price.toDouble()
             val product = Product(rProduct.id ?: 0, rProduct.name, "", Html.fromHtml(rProduct.description).toString().toLowerCase(
                 Locale.ROOT), 0.0, 0.0,
-                rProduct.price?.toDouble(), "", rProduct.images?.first()?.src,
+                price, "", rProduct.images?.first()?.src,
                 "", "", "", "",
                 "", 0, 0, "", "", null)
             navigateTo(Home2FragmentDirections.actionHome2FragmentToProductDetailsFragment(product))
