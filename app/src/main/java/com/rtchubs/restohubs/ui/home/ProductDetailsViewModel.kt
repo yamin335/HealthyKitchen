@@ -71,6 +71,7 @@ class ProductDetailsViewModel @Inject constructor(
                 } else {
                     toastSuccess.postValue("Added to cart")
                 }
+                showSnackbar.postValue(true)
             }
         } catch (e: SQLiteException) {
             e.printStackTrace()
@@ -104,7 +105,6 @@ class ProductDetailsViewModel @Inject constructor(
         viewModelScope.launch(handler) {
             cartDao.increaseProductByQuantity(id, quantity)
             toastSuccess.postValue("Added to cart")
-            showSnackbar.postValue(true)
 //            if (response == -1L) {
 //                toastSuccess.postValue("Please try again later!")
 //            } else {
