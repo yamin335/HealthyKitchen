@@ -5,6 +5,7 @@ import com.rtchubs.restohubs.api.Api.ContentType
 import com.rtchubs.restohubs.models.AllMerchantResponse
 import com.rtchubs.restohubs.models.AllProductResponse
 import com.rtchubs.restohubs.models.AllShoppingMallResponse
+import com.rtchubs.restohubs.models.OrderResponse
 import com.rtchubs.restohubs.models.common.MyAccountListResponse
 import com.rtchubs.restohubs.models.payment_account_models.AddCardOrBankResponse
 import com.rtchubs.restohubs.models.payment_account_models.BankOrCardListResponse
@@ -102,5 +103,4 @@ interface ApiService {
     suspend fun getAllProducts(
         @Path("id") type: String
     ): Response<AllProductResponse>
-
 }

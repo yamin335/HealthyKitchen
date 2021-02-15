@@ -30,6 +30,7 @@ import com.rtchubs.restohubs.ui.video_play.LoadWebViewViewModel
 import com.rtchubs.restohubs.ui.video_play.VideoPlayViewModel
 import com.rtchubs.restohubs.ui.login.ViewPagerViewModel
 import com.rtchubs.restohubs.ui.more.MoreViewModel
+import com.rtchubs.restohubs.ui.order.OrderViewModel
 import com.rtchubs.restohubs.ui.otp_signin.OtpSignInViewModel
 import com.rtchubs.restohubs.ui.pin_number.PinNumberViewModel
 import com.rtchubs.restohubs.ui.profile_signin.ProfileSignInViewModel
@@ -285,4 +286,8 @@ abstract class ViewModelModule {
     @ViewModelKey(ARLocationViewModel::class)
     abstract fun bindARLocationViewModel(viewModel: ARLocationViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(OrderViewModel::class)
+    abstract fun bindOrderViewModel(viewModel: OrderViewModel): ViewModel
 }

@@ -26,6 +26,7 @@ import com.rtchubs.restohubs.ui.video_play.LoadWebViewFragment
 import com.rtchubs.restohubs.ui.video_play.VideoPlayFragment
 import com.rtchubs.restohubs.ui.login.ViewPagerFragment
 import com.rtchubs.restohubs.ui.more.MoreFragment
+import com.rtchubs.restohubs.ui.order.OrderDialogFragment
 import com.rtchubs.restohubs.ui.otp_signin.OtpSignInFragment
 import com.rtchubs.restohubs.ui.pin_number.PinNumberFragment
 import com.rtchubs.restohubs.ui.profile_signin.ProfileSignInFragment
@@ -181,4 +182,7 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeARLocationFragment(): ARLocationFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeOrderFragment(): OrderDialogFragment
 }

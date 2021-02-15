@@ -33,6 +33,21 @@
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 
+    <style name="CustomBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
+    </style>
+
+    <style name="bottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!-- Set parent theme as app theme. -->
+    <style name="DialogFullScreenTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
     <!-- ToggleGroupButton material button -->
     <style name="Widget.App.Button.ToggleGroupButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="iconPadding">0dp</item>

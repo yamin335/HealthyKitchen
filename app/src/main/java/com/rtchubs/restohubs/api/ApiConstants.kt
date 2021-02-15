@@ -7,13 +7,18 @@ import com.rtchubs.restohubs.api.Api.DIRECTORY_BANK_INFO
 import com.rtchubs.restohubs.api.Api.DIRECTORY_CARD
 import com.rtchubs.restohubs.api.Api.DIRECTORY_CONNECT
 import com.rtchubs.restohubs.api.Api.DIRECTORY_PROFILE
+import com.rtchubs.restohubs.api.Api.DIRECTORY_SALES
 import com.rtchubs.restohubs.api.Api.REPO
+import com.rtchubs.restohubs.api.Api.RESTO_REPO
 
 object Api {
     const val PROTOCOL = "https"
     const val API_ROOT = "backend.handyslash.com"
+    const val ADMIN_API_ROOT = "rtchubs.dev"
     const val API_ROOT_URL = "$PROTOCOL://$API_ROOT"
+    const val ADMIN_API_ROOT_URL = "$PROTOCOL://$ADMIN_API_ROOT"
     const val REPO = "api"
+    const val RESTO_REPO = "restohubssalesbackend"
     const val API_VERSION = "v1"
     const val DIRECTORY_ACCOUNT = "account"
     const val DIRECTORY_CONNECT = "connect"
@@ -21,6 +26,7 @@ object Api {
     const val DIRECTORY_CARD = "banklink"
     const val DIRECTORY_BANK = "cardlink"
     const val DIRECTORY_PROFILE = "profile"
+    const val DIRECTORY_SALES = "sales"
     const val ContentType = "Content-Type: application/json"
 
     const val baseUrl = "https://healthykitchen33.com/wp-json/wc/v3/"
@@ -38,6 +44,7 @@ object ApiEndPoint {
     const val ADD_BANK = "/$REPO/$API_VERSION/${DIRECTORY_BANK}"
     const val ADD_CARD = "/$REPO/$API_VERSION/${DIRECTORY_CARD}"
     const val MY_ACCOUNT_LIST = "/$REPO/$API_VERSION/${DIRECTORY_PROFILE}/accounts"
+    const val SALES = "/$RESTO_REPO/$REPO/$DIRECTORY_SALES/addorder"
 
     // eDokanPat
     const val ALL_MALL = "/$REPO/shopping-malls"

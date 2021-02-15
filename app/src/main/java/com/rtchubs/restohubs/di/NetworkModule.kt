@@ -90,6 +90,34 @@ class NetworkModule {
             .create(RestoHubsApiService::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideAdminApiService(
+        @Named("RestoHubs") okHttpClient: OkHttpClient,
+        @Named("Admin") retrofitBuilder: Retrofit.Builder
+    ): AdminApiService {
+        return retrofitBuilder
+            .client(okHttpClient).build()
+            .create(AdminApiService::class.java)
+    }
+
+
+    @Provides
+    @Singleton
+    @Named("Admin")
+    fun provideRetrofitBuilderForAdmin(
+        liveDataCallAdapterFactory: LiveDataCallAdapterFactory,
+        nullOrEmptyConverterFactory: Converter.Factory,
+        scalarsConverterFactory: ScalarsConverterFactory,
+        @Named("RestoHubs") gsonConverterFactory: GsonConverterFactory
+    ): Retrofit.Builder =
+        Retrofit.Builder()
+            .baseUrl(Api.ADMIN_API_ROOT_URL)
+            .addConverterFactory(scalarsConverterFactory)
+            .addConverterFactory(gsonConverterFactory)
+            .addConverterFactory(nullOrEmptyConverterFactory)
+            .addCallAdapterFactory(liveDataCallAdapterFactory)
+
 
     @Provides
     @Singleton

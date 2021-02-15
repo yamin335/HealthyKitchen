@@ -107,14 +107,14 @@
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/addToCart"
+                    android:id="@+id/btnCheckout"
                     style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="32dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="60dp"
                     android:backgroundTint="#E91E63"
                     android:text="Checkout Now"
                     android:textAllCaps="false"
